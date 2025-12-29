@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Tiny ws chat</title>
+    <script src="./js/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="set_username">
+        <form id="userForm" class="msgForm">
+          <input
+            type="text"
+            placeholder="Username"
+            class="input"
+            id="userinputBox"
+          />
+          <input type="submit" class="btn" value="Register" />
+        </form>
+        <p id="username_status">
+          Please select a username. If left blank, one will be chosen for you.
+        </p>
+      </div>
+      <div id="chat">
+        <p class="msg">Messages:</p>
+        <div id="messages" class="messages"></div>
+        <form id="msgForm" class="msgForm">
+          <input
+            type="text"
+            placeholder="Send message"
+            class="input"
+            id="messageinputBox"
+            required="true"
+            pattern="(.|\s)*\S(.|\s)*"
+          />
+          <input type="submit" class="btn" value="Send" />
+          <button type="reset" class="btn">Leave chat</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
