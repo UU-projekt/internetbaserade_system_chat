@@ -112,7 +112,7 @@ function create_message(content, m_username, colour, is_encrypted = false) {
   if (is_encrypted) {
     const info = document.createElement("small");
     info.classList = "p2p_enc_info";
-    info.innerText = "delivered with P2P encryption";
+    info.innerText = "delivered with E2E encryption";
     msg.append(info);
   }
 
