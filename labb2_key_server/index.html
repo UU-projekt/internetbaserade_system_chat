@@ -3,99 +3,98 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Key repository</title>
     <script src="jsencrypt.min.js"></script>
-    <script type="text/javascript">
-      const API_BASE = "http://localhost:8888";
-
-      function get_value_from_id(node_id, as_elem = false) {
-        if (typeof node_id === "string")
-          return as_elem
-            ? document.getElementById(node_id)
-            : document.getElementById(node_id).value;
-        else if (Array.isArray(node_id))
-          return node_id.map((id) =>
-            as_elem
-              ? document.getElementById(id)
-              : document.getElementById(id).value
-          );
-        else return null;
-      }
-
-      function send_user_data() {
-        const [username, public_key] = get_value_from_id([
-          "userName",
-          "publicKey",
-        ]);
-
-        if (!username || !public_key)
-          return alert(`username or public key were null!`);
-
-        fetch(`${API_BASE}/api/pubkeys`, {
-          method: "POST",
-          body: JSON.stringify({ username, public_key }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then(async (res) => {
-            if (res.status === 201) {
-              alert("yay :D");
-              // yay we ok :D
-            } else {
-              // we goofy fr twn
-            }
-          })
-          .catch(() => {
-            alert("we dun goof");
-          });
-      }
-
-      function generate_keys() {
-        const [private_key, public_key] = get_value_from_id(
-          ["privateKey", "publicKey"],
-          true
-        );
-
-        const crypt = new JSEncrypt();
-        const key = crypt.getKey();
-        public_key.value = key.getPublicKey();
-        private_key.value = key.getPrivateKey();
-      }
-    </script>
+    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
 
-  <body style="padding: 20px">
-    <h1>Register username and public key</h1>
-    <input
-      id="userName"
-      type="text"
-      placeholder="username"
-      style="width: 100px"
-    />
-    <button onclick="generate_keys()">Generate keys</button>
-    <br />
-    <textarea
-      name="privateKey"
-      id="privateKey"
-      placeholder="private key"
-      cols="30"
-      rows="10"
-      style="resize: none"
-    ></textarea>
-    <textarea
-      name="publicKey"
-      id="publicKey"
-      placeholder="public key"
-      cols="30"
-      rows="10"
-      style="resize: none"
-    ></textarea>
-    <br />
-    <button onclick="send_user_data();">Send</button>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <img src="/nus_chat.webp" />
+        <h1>Encrypt</h1>
+      </div>
+      <form id="userForm" class="msgForm">
+        <div>
+          <h2>Username</h2>
+          <div class="input_group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-3.123 0-5.914-1.441-7.749-3.69.259-.588.783-.995 1.867-1.246 2.244-.518 4.459-.981 3.393-2.945-3.155-5.82-.899-9.119 2.489-9.119 3.322 0 5.634 3.177 2.489 9.119-1.035 1.952 1.1 2.416 3.393 2.945 1.082.25 1.61.655 1.871 1.241-1.836 2.253-4.628 3.695-7.753 3.695z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Username"
+              class="input"
+              id="userName"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <h2>Private Key</h2>
+          <div class="input_group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.625 8.292c0 .506-.41.917-.917.917s-.916-.411-.916-.917.409-.917.916-.917.917.411.917.917zm7.375 3.708c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-11.293 1.946c-1.142-.436-2.065-1.312-2.561-2.423l-3.146 3.185v2.292h3v-1h1v-1h.672l1.035-1.054zm5.293-4.279c0-2.025-1.642-3.667-3.667-3.667-2.024 0-3.666 1.642-3.666 3.667s1.642 3.667 3.666 3.667c2.025-.001 3.667-1.643 3.667-3.667z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="private key"
+              class="input"
+              id="privateKey"
+              required
+            />
+          </div>
+        </div>
 
-    <h1>Request log:</h1>
-    <table
-      id="messagesTable"
-      style="width: 400px; border: 1px solid black"
-    ></table>
+        <div>
+          <h2>Public Key</h2>
+          <div class="input_group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.625 8.292c0 .506-.41.917-.917.917s-.916-.411-.916-.917.409-.917.916-.917.917.411.917.917zm7.375 3.708c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-11.293 1.946c-1.142-.436-2.065-1.312-2.561-2.423l-3.146 3.185v2.292h3v-1h1v-1h.672l1.035-1.054zm5.293-4.279c0-2.025-1.642-3.667-3.667-3.667-2.024 0-3.666 1.642-3.666 3.667s1.642 3.667 3.666 3.667c2.025-.001 3.667-1.643 3.667-3.667z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="public key"
+              class="input"
+              id="publicKey"
+              required
+            />
+          </div>
+        </div>
+
+        <div id="btnRow">
+          <button type="button" id="gen_keys_btn" class="btn tetriary">
+            Generate Keys
+          </button>
+          <input
+            id="reg_btn"
+            type="submit"
+            class="btn primary"
+            value="Register Keys"
+            type="submit"
+          />
+        </div>
+      </form>
+    </div>
   </body>
 </html>

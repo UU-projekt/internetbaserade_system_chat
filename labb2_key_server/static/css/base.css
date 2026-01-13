@@ -1,0 +1,80 @@
+@import url("/css/buttons.css");
+@import url("/css/toast.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --input_height: 4rem;
+  --button_height: 4rem;
+
+  --primary_clr: #5539cc;
+  --on_primary: white;
+
+  --background_clr: #121212;
+  --on_background: white;
+
+  --error_clr: #d33f49;
+  --on_error: white;
+
+  --success_clr: #29513e;
+  --on_success: white;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  background-color: var(--background_clr);
+  color: var(--on_background);
+}
+
+.input {
+  height: 100%;
+  width: 100%;
+  flex: 4;
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+  padding-left: 1rem;
+  color: white;
+}
+
+.input:disabled {
+  opacity: 0.5;
+}
+
+.input_group {
+  height: var(--input_height);
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 0.5rem;
+  outline: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding-left: 0.5rem;
+
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.input_group > input {
+  flex-grow: 1;
+}
+
+.input_group > svg {
+  fill: white;
+  opacity: 0.5;
+}
+
+.flex {
+  display: flex;
+}

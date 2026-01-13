@@ -3,44 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
-    <title>Tiny ws chat</title>
-    <script src="jsencrypt.min.js"></script>
-    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="/css/index.css" />
+    <title>Login | Nus Chat</title>
+    <script type="module" src="/js/index.js" defer></script>
   </head>
 
   <body>
     <div class="container">
-      <div id="set_username">
-        <form id="userForm" class="msgForm">
+      <div class="hero">
+        <img src="/nus_chat.webp" />
+        <h1>Nus Chat</h1>
+      </div>
+      <form id="userForm" class="msgForm">
+        <div>
+          <div class="input_group">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 22c-3.123 0-5.914-1.441-7.749-3.69.259-.588.783-.995 1.867-1.246 2.244-.518 4.459-.981 3.393-2.945-3.155-5.82-.899-9.119 2.489-9.119 3.322 0 5.634 3.177 2.489 9.119-1.035 1.952 1.1 2.416 3.393 2.945 1.082.25 1.61.655 1.871 1.241-1.836 2.253-4.628 3.695-7.753 3.695z"
+              />
+            </svg>
+            <input
+              name="username"
+              type="text"
+              placeholder="Username"
+              class="input"
+              id="userinputBox"
+            />
+          </div>
+          <p id="username_status">
+            Please select a username. If left blank, one will be chosen for you.
+          </p>
+        </div>
+
+        <div class="input_group">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.625 8.292c0 .506-.41.917-.917.917s-.916-.411-.916-.917.409-.917.916-.917.917.411.917.917zm7.375 3.708c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12zm-11.293 1.946c-1.142-.436-2.065-1.312-2.561-2.423l-3.146 3.185v2.292h3v-1h1v-1h.672l1.035-1.054zm5.293-4.279c0-2.025-1.642-3.667-3.667-3.667-2.024 0-3.666 1.642-3.666 3.667s1.642 3.667 3.666 3.667c2.025-.001 3.667-1.643 3.667-3.667z"
+            />
+          </svg>
+
           <input
             type="text"
-            placeholder="Username"
+            name="pk"
+            placeholder="---RSA BEGIN---"
             class="input"
-            id="userinputBox"
+            id="privateKeyInput"
           />
-          <input type="submit" class="btn" value="Register" />
-        </form>
-        <p id="username_status">
-          Please select a username. If left blank, one will be chosen for you.
-        </p>
-      </div>
-      <div id="chat">
-        <p class="msg">Messages:</p>
-        <div id="messages" class="messages"></div>
-        <form id="msgForm" class="msgForm">
-          <input
-            type="text"
-            placeholder="Send message"
-            class="input"
-            id="messageinputBox"
-            required="true"
-            pattern="(.|\s)*\S(.|\s)*"
-          />
-          <input type="submit" class="btn" value="Send" />
-          <button type="reset" class="btn">Leave chat</button>
-        </form>
-      </div>
+        </div>
+
+        <div id="btnRow">
+          <button type="button" id="import_key_btn" class="btn tetriary">
+            Import Key
+          </button>
+          <input type="submit" class="btn primary" value="Register" />
+        </div>
+      </form>
     </div>
   </body>
 </html>

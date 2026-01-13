@@ -41,6 +41,10 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + "/index.html");
 });
 
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
+
 // API ENDPOINTS
 
 app.get("/api/test/pubkeys", function (request, response) {

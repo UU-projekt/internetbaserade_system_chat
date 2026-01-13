@@ -1,0 +1,37 @@
+.btn {
+  padding: 0rem 2rem 0rem 2rem;
+  height: var(--button_height);
+  border-color: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  background-color: var(--clr_prim);
+  --outline_clr: color-mix(in srgb, var(--clr_prim) 50%, transparent);
+  outline: 1px solid var(--outline_clr);
+  color: var(--clr_text);
+  transition: 0.15s ease-in-out;
+}
+
+form:has(input:invalid) input.btn {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+.btn:hover {
+  background-color: color-mix(in srgb, var(--clr_prim), white 15%);
+}
+
+.btn:active {
+  background-color: color-mix(in srgb, var(--clr_prim), black 15%);
+}
+
+.btn.primary {
+  --clr_prim: var(--primary_clr);
+  --clr_text: var(--on_primary);
+}
+
+.btn.tetriary {
+  --clr_text: var(--on_background);
+  --outline_clr: rgba(255, 255, 255, 0.2) !important;
+}

@@ -1,0 +1,153 @@
+@import url("/css/base.css");
+
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hero {
+  view-transition-name: main-logo;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  background-color: color-mix(in srgb, var(--background_clr), white 5%);
+  padding: 1rem;
+}
+
+.hero h1 {
+  font-size: 1.5rem;
+}
+
+.hero img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.container {
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: min(800px, 50%);
+  height: min(700px, 50%);
+  overflow: hidden;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#key_selection {
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: min(250px, 25%);
+  height: min(700px, 50%);
+  overflow: hidden;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#messages {
+  padding: 1rem;
+  overflow-y: scroll;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.badge {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  outline: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  transition: 0.2s ease-in-out;
+}
+
+.badge.offline {
+  background-color: var(--error_clr);
+  outline: 2px solid color-mix(in srgb, var(--error_clr), white 10%);
+}
+
+.badge.online {
+  background-color: var(--success_clr);
+  outline: 2px solid color-mix(in srgb, var(--success_clr), white 10%);
+}
+
+#txtbox {
+  background-color: color-mix(in srgb, var(--background_clr), white 10%);
+  color: var(--on_background);
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+#msg_bar {
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#msg_bar .btn {
+  height: 100%;
+  fill: white;
+}
+
+#msg_bar textarea {
+  transition: height 0.05s ease; /* Very fast transition for smoothness */
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  resize: none;
+  background-color: transparent;
+  border: 0;
+  color: white;
+  display: block;
+  outline: none;
+}
+
+.msg .meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.msg .meta > time {
+  opacity: 0.6;
+  font-size: smaller;
+}
+
+#key_list {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#key_list > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#github {
+  display: block;
+  transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  fill: color-mix(in srgb, var(--background_clr), white 20%);
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  filter: drop-shadow(1px 1px 2px rgba(255, 255, 255, 0.1));
+}
+
+#github:hover {
+  fill: color-mix(in srgb, var(--background_clr), white 25%);
+}
+
+.p2p_enc_info {
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
